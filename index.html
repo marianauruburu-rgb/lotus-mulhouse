@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus - L'harmonie du Mandarin à Mulhouse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;600;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --zen-white: #fdfbf7;
+            --lotus-pink: #fce4ec; 
+            --lotus-accent: #e91e63; 
+            --chinese-ink: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--zen-white);
+            color: var(--chinese-ink);
+            scroll-behavior: smooth;
+        }
+
+        .serif-chinese {
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        /* Hero con la Ciudad Prohibida - Corregido a: ciudad-perdida.jpg */
+        .hero-institute {
+            background: linear-gradient(to right, rgba(253, 251, 247, 0.95) 20%, rgba(253, 251, 247, 0.2)), url('ciudad-perdida.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .logo-nav {
+            height: 95px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-hero-inline {
+            width: 700px; 
+            max-width: 55vw;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+        }
+
+        .lang-btn.active {
+            border-color: var(--lotus-accent);
+            color: var(--lotus-accent);
+            background: white;
+            font-weight: 900;
+        }
+
+        .brush-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .brush-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--lotus-pink);
+            z-index: -1;
+            border-radius: 50% 20%;
+            opacity: 0.7;
+        }
+
+        .slogan-container {
+            border-left: 1px solid #e5e7eb;
+            padding-left: 1.25rem;
+            margin-left: 1rem;
+        }
+
+        .card-modern {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .card-modern:hover {
+            border-color: var(--lotus-accent);
+            transform: translateY(-5px);
+        }
+
+        .form-input {
+            width: 100%;
+            background: #fdfbf7;
+            border: 1px solid #fce4ec;
+            border-radius: 12px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--lotus-accent);
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <div class="flex items-center">
+                <!-- Ajustado a: logo-lotus.png -->
+                <img src="logo-lotus.png" alt="Logo Lotus" class="logo-nav">
+                <div class="hidden lg:block slogan-container">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium leading-relaxed" data-i18n="slogan">
+                        Apprenez le mandarin,<br>cultivez votre avenir
+                    </p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 items-center text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#home" class="hover:text-pink-500 transition-colors" data-i18n="nav_home">Accueil</a>
+                <a href="#formations" class="hover:text-pink-500 transition-colors" data-i18n="nav_formations">Formations</a>
+                <a href="#mulhouse" class="hover:text-pink-500 transition-colors" data-i18n="nav_mulhouse">Apprendre</a>
+                <a href="#contact" class="hover:text-pink-500 transition-colors" data-i18n="nav_contact">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <div class="flex bg-gray-100 rounded-xl p-1">
+                    <button onclick="changeLanguage('fr')" id="btn-fr" class="lang-btn active px-3 py-1 rounded-lg text-[10px] font-bold">FR</button>
+                    <button onclick="changeLanguage('zh')" id="btn-zh" class="lang-btn px-3 py-1 rounded-lg text-[10px] font-bold">中文</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn px-3 py-1 rounded-lg text-[10px] font-bold">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-institute min-h-screen flex items-center border-b border-pink-50">
+        <div class="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 items-center pt-24">
+            <div class="space-y-8">
+                <div class="inline-block px-4 py-2 bg-pink-50 rounded-full">
+                    <span class="text-xs font-bold tracking-[0.2em] text-pink-500 uppercase" data-i18n="hero_tag">Institut de Langue Chinoise</span>
+                </div>
+                
+                <h1 class="serif-chinese text-6xl md:text-8xl font-black text-gray-900 leading-tight">
+                    Sagesse <br> <span class="brush-underline">Chinoise</span>
+                </h1>
+                
+                <p class="text-xl text-gray-600 leading-relaxed max-w-lg font-light" data-i18n="hero_desc">
+                    Découvrez la richesse du mandarin à Mulhouse avec nos professeurs natifs. Un accompagnement sur mesure dans un environnement serein.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contact" class="bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold text-xs hover:bg-pink-500 transition-all shadow-xl tracking-widest flex items-center gap-3 uppercase">
+                        <span data-i18n="btn_start">Réserver un essai</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex justify-end">
+                <!-- Ajustado a: logo-lotus.png -->
+                <img src="logo-lotus.png" alt="Lotus Logo" class="logo-hero-inline">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Apprendre le chinois à Mulhouse -->
+    <section id="mulhouse" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="relative group">
+                    <div class="relative overflow-hidden shadow-2xl rounded-2xl">
+                        <!-- Ajustado a: MULHOUSE.jpg -->
+                        <img src="MULHOUSE.jpg" alt="Mulhouse City" class="w-full h-[600px] object-cover block transform group-hover:scale-105 transition-transform duration-1000">
+                    </div>
+                </div>
+
+                <div class="space-y-10">
+                    <div class="inline-flex items-center gap-4">
+                        <div class="h-px w-12 bg-pink-500"></div>
+                        <span class="text-pink-500 font-bold text-xs uppercase tracking-[0.3em]">Notre Ville</span>
+                    </div>
+                    <h2 class="serif-chinese text-5xl font-black text-gray-800 leading-tight" data-i18n="mulhouse_title">
+                        Apprendre le chinois à <span class="brush-underline">Mulhouse</span>
+                    </h2>
+                    <p class="text-xl text-gray-500 leading-relaxed font-light" data-i18n="mulhouse_desc">
+                        Nous avons à cœur de proposer un enseignement du mandarin alliant rigueur pédagogique et immersion culturelle. Nos formateurs diplômés vous guident avec bienveillance pour maîtriser la langue tout en explorant les traditions millénaires de la Chine.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations -->
+    <section id="formations" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-left mb-20">
+                <h2 class="serif-chinese text-5xl font-black text-gray-900 mb-4" data-i18n="formations_title">Nos Formations</h2>
+                <div class="h-1.5 w-24 bg-pink-500 rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="card-modern overflow-hidden group">
+                    <div class="h-64 overflow-hidden">
+                        <!-- Ajustado a: Estudio-chino.jpg -->
+                        <img src="Estudio-chino.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="serif-chinese text-2xl font-bold mb-4" data-i18n="f1_title">Apprendre le mandarin</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed" data-i18n="f1_desc">Cours adaptés à tous les niveaux, de l'initiation au perfectionnement.</p>
+                    </div>
+                </div>
+                <div class="card-modern overflow-hidden group">
+                    <div class="h-64 overflow-hidden">
+                        <!-- Ajustado a: HSK.jpg -->
+                        <img src="HSK.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="serif-chinese text-2xl font-bold mb-4" data-i18n="f2_title">Examens HSK</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed" data-i18n="f2_desc">Préparation intensive pour réussir le test officiel de langue chinoise.</p>
+                    </div>
+                </div>
+                <div class="card-modern overflow-hidden group">
+                    <div class="h-64 overflow-hidden">
+                        <!-- Ajustado a: ceremonia-de-te.jpg -->
+                        <img src="ceremonia-de-te.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="serif-chinese text-2xl font-bold mb-4" data-i18n="f3_title">Ateliers culturels</h3>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed" data-i18n="f3_desc">Calligraphie et traditions pour une immersion totale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs & Offre Famille -->
+    <section id="offres" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Tarifs Card -->
+                <div class="bg-white rounded-[40px] shadow-sm border border-gray-100 p-12 flex flex-col justify-between hover:shadow-xl transition-all">
+                    <div>
+                        <span class="bg-pink-500 text-white px-4 py-1.5 rounded-lg text-[10px] font-bold mb-6 inline-block uppercase tracking-widest" data-i18n="pricing_badge">Tarifs</span>
+                        <h2 class="serif-chinese text-4xl font-black text-gray-900 mb-4" data-i18n="pricing_title">Profitez de nos tarifs accessibles !</h2>
+                        <p class="text-gray-500 text-sm mb-8" data-i18n="pricing_subtitle">Une opportunité unique pour commencer votre apprentissage du mandarin.</p>
+                        <div class="flex items-baseline gap-2 mb-8">
+                            <span class="text-sm text-gray-400" data-i18n="pricing_from">À partir de</span>
+                            <span class="text-6xl font-black text-pink-500">28 €</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="border-2 border-gray-900 text-gray-900 px-10 py-5 rounded-2xl font-bold text-xs hover:bg-gray-900 hover:text-white transition-all text-center tracking-widest uppercase" data-i18n="pricing_cta">Nous contacter</a>
+                </div>
+
+                <!-- Famille Card -->
+                <div class="bg-gray-900 rounded-[40px] shadow-sm p-12 flex flex-col justify-between relative overflow-hidden group">
+                    <!-- Ajustado a: aprender-en-familia .jpg -->
+                    <img src="aprender-en-familia .jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity">
+                    <div class="relative z-10">
+                        <span class="bg-pink-500 text-white px-4 py-1.5 rounded-lg text-[10px] font-bold mb-6 inline-block tracking-widest uppercase" data-i18n="family_title_badge">Offre Spéciale</span>
+                        <h2 class="serif-chinese text-4xl font-black text-white mb-2" data-i18n="family_title">Apprenons en famille</h2>
+                        <p class="text-gray-300 text-sm mb-8" data-i18n="family_subtitle">Inscrivez-vous avec un proche et profitez de condiciones exclusives.</p>
+                        <ul class="space-y-4 text-white font-bold mb-8">
+                            <li class="flex items-center gap-3"><i data-lucide="percent" class="text-pink-500 w-5 h-5"></i> <span data-i18n="family_p1">50% de réduction pour le 2ème membre.</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="gift" class="text-pink-500 w-5 h-5"></i> <span data-i18n="family_p2">1ère classe offerte.</span></li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="relative z-10 bg-white text-gray-900 px-10 py-5 rounded-2xl font-bold text-xs hover:bg-pink-500 hover:text-white transition-all text-center tracking-widest uppercase" data-i18n="pricing_cta">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 text-center lg:text-left">
+            <h2 class="serif-chinese text-5xl font-black text-gray-900 mb-16" data-i18n="contact_title">Nous contacter</h2>
+            <div class="grid lg:grid-cols-2 gap-24 items-start">
+                <form class="space-y-6 bg-white p-8 md:p-10 rounded-[40px] border border-pink-50 shadow-xl text-left">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 pl-1" data-i18n="form_name">Nom</label>
+                            <input type="text" class="form-input" placeholder="Linfeng Wang">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 pl-1" data-i18n="form_email">Email</label>
+                            <input type="email" class="form-input" placeholder="hola@example.com">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 pl-1" data-i18n="form_subject">Sujet</label>
+                        <select class="form-input">
+                            <option data-i18n="opt_1">Cours particuliers</option>
+                            <option data-i18n="opt_2">Cours collectifs</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-gray-400 pl-1" data-i18n="form_message">Message</label>
+                        <textarea rows="4" class="form-input" placeholder="Bonjour..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-pink-500 text-white py-5 rounded-2xl font-bold text-[11px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-all shadow-lg" data-i18n="form_submit">Envoyer</button>
+                </form>
+
+                <div class="h-[500px] rounded-[50px] overflow-hidden shadow-2xl border-8 border-white">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2686.0718712396417!2d7.334033276859358!3d47.74758787834241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47919b596144e183%3A0xc3911f99c8558661!2s12%20Rue%20de%20l'Arsenal%2C%2068100%20Mulhouse!5e0!3m2!1sfr!2sfr!4v1711560000000!5m2!1sfr!2sfr" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 text-center bg-white border-t border-gray-100">
+        <!-- Ajustado a: logo-lotus.png -->
+        <img src="logo-lotus.png" class="h-16 mx-auto mb-8 opacity-40">
+        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.5em]">© 2026 Lotus Mandarin Mulhouse</p>
+    </footer>
+
+    <script>
+        const translations = {
+            fr: {
+                slogan: "Apprenez le mandarin,<br>cultivez votre avenir",
+                nav_home: "Accueil",
+                nav_mulhouse: "Apprendre",
+                nav_formations: "Formations",
+                nav_contact: "Contact",
+                hero_tag: "Institut de Langue Chinoise",
+                hero_desc: "Découvrez la richesse du mandarin à Mulhouse avec nos professeurs natifs. Un accompagnement sur mesure dans un cadre serein.",
+                btn_start: "Réserver un essai",
+                mulhouse_title: "Apprendre le chinois à <span class='brush-underline'>Mulhouse</span>",
+                mulhouse_desc: "Nous avons à cœur de proposer un enseignement du mandarin alliant rigueur pédagogique et immersion culturelle. Nos formateurs diplômés vous guident avec bienveillance pour maîtriser la langue tout en explorant les traditions millénaires de la Chine.",
+                formations_title: "Nos Formations",
+                f1_title: "Apprendre le mandarin",
+                f1_desc: "Cours adaptés à tous les niveles, de l'initiation au perfectionnement.",
+                f2_title: "Examens HSK",
+                f2_desc: "Préparation intensive pour réussir le test officiel de langue chinoise.",
+                f3_title: "Ateliers culturels",
+                f3_desc: "Calligraphie et traditions pour une immersion totale.",
+                pricing_badge: "Tarifs",
+                pricing_title: "Profitez de nos tarifs accessibles !",
+                pricing_subtitle: "Une opportunité unique pour commencer votre apprentissage du mandarin.",
+                pricing_from: "À partir de",
+                family_title_badge: "Offre Spéciale",
+                family_title: "Apprenons en famille",
+                family_subtitle: "Inscrivez-vous avec un proche et profitez de condiciones exclusives.",
+                family_p1: "50% de réduction pour le 2ème membre.",
+                family_p2: "1ère classe offerte.",
+                pricing_cta: "En savoir plus",
+                contact_title: "Nous contacter",
+                form_name: "Nom",
+                form_email: "Email",
+                form_subject: "Sujet",
+                form_message: "Message",
+                form_submit: "Envoyer",
+                opt_1: "Cours particuliers",
+                opt_2: "Cours collectifs"
+            },
+            zh: {
+                slogan: "学习普通话，<br>开启您的未来",
+                nav_home: "主页",
+                nav_mulhouse: "学习",
+                nav_formations: "课程",
+                nav_contact: "联系我们",
+                hero_tag: "汉语学院",
+                hero_desc: "与母语老师一起探索米卢斯普通话的丰富性。在宁静的环境中为您提供量身定制的支持。",
+                btn_start: "预约试课",
+                mulhouse_title: "在 <span class='brush-underline'>米卢斯</span> 学习汉语",
+                mulhouse_desc: "我们致力于提供结合严谨教学与文化沉浸的普通话教育。我们资深的导师将细心引导您掌握语言，同时探索中国悠久的传统。",
+                formations_title: "我们的课程",
+                f1_title: "汉语学习",
+                f1_desc: "适合所有水平的课程，从入门到精通。",
+                f2_title: "HSK 考试",
+                f2_desc: "密集培训，通过官方考试。",
+                f3_title: "文化工作坊",
+                f3_desc: "书法和传统文化，全方位体验。",
+                pricing_badge: "资费",
+                pricing_title: "享受超值优惠价格！",
+                pricing_subtitle: "开始学习普通话的绝佳机会。",
+                pricing_from: "起价",
+                family_title_badge: "特别优惠",
+                family_title: "家庭共同学习",
+                family_subtitle: "与亲友共同报名，享受专属优惠。",
+                family_p1: "第二位家庭成员享受 50% 折扣。",
+                family_p2: "首课免费。",
+                pricing_cta: "了解更多",
+                contact_title: "联系我们",
+                form_name: "姓名",
+                form_email: "电子邮件",
+                form_subject: "主题",
+                form_message: "留言",
+                form_submit: "发送消息",
+                opt_1: "私教课",
+                opt_2: "小组课"
+            },
+            en: {
+                slogan: "Learn Mandarin,<br>cultivate your future",
+                nav_home: "Home",
+                nav_mulhouse: "Learn",
+                nav_formations: "Programs",
+                nav_contact: "Contact",
+                hero_tag: "Chinese Language Institute",
+                hero_desc: "Discover the richness of Mandarin in Mulhouse with native teachers. Tailor-made support in a serene environment.",
+                btn_start: "BOOK A TRIAL",
+                mulhouse_title: "Learn Chinese in <span class='brush-underline'>Mulhouse</span>",
+                mulhouse_desc: "We are committed to providing Mandarin education that combines pedagogical rigor with cultural immersion. Our certified trainers guide you with care to master the language while exploring China's millenary traditions.",
+                formations_title: "Our Programs",
+                f1_title: "Learn Mandarin",
+                f1_desc: "Courses adapted to all levels, from beginners to advanced.",
+                f2_title: "HSK Exams",
+                f2_desc: "Intensive preparation for official Chinese tests.",
+                f3_title: "Cultural Workshops",
+                f3_desc: "Calligraphy and traditions for total immersion.",
+                pricing_badge: "Pricing",
+                pricing_title: "Enjoy our accessible rates!",
+                pricing_subtitle: "A unique opportunity to start your Mandarin learning journey.",
+                pricing_from: "Starting at",
+                family_title_badge: "Special Offer",
+                family_title: "Learn as a Family",
+                family_subtitle: "Sign up with a loved one and enjoy exclusive conditions.",
+                family_p1: "50% discount for the second member.",
+                family_p2: "1st class free of charge.",
+                pricing_cta: "Learn more",
+                contact_title: "Contact Us",
+                form_name: "Name",
+                form_email: "Email",
+                form_subject: "Subject",
+                form_message: "Message",
+                form_submit: "Send Message",
+                opt_1: "Private lessons",
+                opt_2: "Group lessons"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.documentElement.lang = lang;
+        }
+
+        window.onload = () => lucide.createIcons();
+    </script>
+</body>
+</html>
